@@ -1,0 +1,21 @@
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'java'
+
+group 'com.my.poc'
+version '0.0.1-SNAPSHOT'
+
+dependencies {
+    implementation project(':domains:domain-name')
+    implementation project(':implementations:service-name')
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+bootJar {
+    mainClassName = 'com.my.poc.springbootdomaindrivendesign.SpringBootDomainDrivenDesignApplication'
+}
+
+bootRun {
+    args = ["--spring.profiles.active=local"]
+}

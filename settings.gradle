@@ -1,0 +1,6 @@
+rootProject.name = 'spring-boot-domain-driven-design'
+include 'apis:sample-api'
+include 'domains:domain-name'
+include 'implementations'
+include 'implementations:service-name'
+
