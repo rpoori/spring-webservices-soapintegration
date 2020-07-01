@@ -6,8 +6,8 @@ group 'com.my.poc'
 version '0.0.1-SNAPSHOT'
 
 dependencies {
-    implementation project(':domains:domain-name')
-    implementation project(':implementations:service-name')
+    implementation project(':domains:user')
+    implementation project(':implementations:external-user-service')
     implementation 'org.springframework.boot:spring-boot-starter-web'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
