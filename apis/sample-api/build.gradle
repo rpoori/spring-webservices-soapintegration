@@ -13,7 +13,7 @@ dependencies {
 }
 
 bootJar {
-    mainClassName = 'com.my.poc.springbootdomaindrivendesign.SpringBootDomainDrivenDesignApplication'
+    mainClassName = 'com.my.poc.springwebservicessoapintegration.SpringWebServicesSoapIntegrationApplication'
 }
 
 bootRun {

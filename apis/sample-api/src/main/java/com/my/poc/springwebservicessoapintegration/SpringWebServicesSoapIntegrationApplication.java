@@ -1,13 +1,13 @@
-package com.my.poc.springbootdomaindrivendesign;
+package com.my.poc.springwebservicessoapintegration;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringBootDomainDrivenDesignApplication {
+public class SpringWebServicesSoapIntegrationApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringBootDomainDrivenDesignApplication.class, args);
+		SpringApplication.run(SpringWebServicesSoapIntegrationApplication.class, args);
 	}
 
 }

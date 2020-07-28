@@ -1,4 +1,4 @@
-package com.my.poc.springbootdomaindrivendesign;
+package com.my.poc.springwebservicessoapintegration;
 
 import com.my.poc.user.GetActiveUsers;
 import com.my.poc.user.User;
