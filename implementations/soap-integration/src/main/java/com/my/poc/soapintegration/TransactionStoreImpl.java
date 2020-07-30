@@ -21,7 +21,7 @@ public class TransactionStoreImpl implements TransactionStore {
 
     private final GenericSoapConnector genericSoapConnector;
     private final XStreamMarshaller xStreamMarshaller;
-    private final GenericUnmarshaller genericUnmarshaller;
+//    private final GenericUnmarshaller genericUnmarshaller;
     private final GenericConfig genericConfig;
 
     @Override
@@ -43,7 +43,7 @@ public class TransactionStoreImpl implements TransactionStore {
                 genericConfig.getSoapUrl(),
                 genericInput,
                 xStreamMarshaller,
-                genericUnmarshaller
+                xStreamMarshaller
         );
 
         return processAndMapResponseToTransactionList(genericOutput);

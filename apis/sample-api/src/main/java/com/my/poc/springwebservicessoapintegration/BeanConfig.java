@@ -55,25 +55,26 @@ public class BeanConfig {
         return new GenericSoapConnector();
     }
 
-    @Bean
-    public GenericUnmarshaller genericUnmarshaller() {
-        GenericUnmarshaller genericUnmarshaller = new GenericUnmarshaller();
-     //   genericUnmarshaller.setBindingName("binding");
-        genericUnmarshaller.setTargetClass(SoapDTO.class); // location of soapDTO package
-        return genericUnmarshaller;
-    }
+//    @Bean
+//    public GenericUnmarshaller genericUnmarshaller() {
+//        GenericUnmarshaller genericUnmarshaller = new GenericUnmarshaller();
+//        genericUnmarshaller.setBindingName("binding");
+//        genericUnmarshaller.setTargetPackage("com.my.poc.soapintegration"); // location of soapDTO package
+////        genericUnmarshaller.setTargetClass(SoapDTO.class);
+//        return genericUnmarshaller;
+//    }
 
     @Bean
     public TransactionStore transactionStore(
         GenericSoapConnector genericSoapConnector,
         XStreamMarshaller xStreamMarshaller,
-        GenericUnmarshaller genericUnmarshaller,
+//        GenericUnmarshaller genericUnmarshaller,
         GenericConfig genericConfig
     ) {
         return new TransactionStoreImpl(
                 genericSoapConnector,
                 xStreamMarshaller,
-                genericUnmarshaller,
+//                genericUnmarshaller,
                 genericConfig
         );
     }
