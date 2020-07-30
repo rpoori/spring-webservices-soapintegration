@@ -3,6 +3,16 @@ buildscript {
 		springBootVersion = '2.3.1.RELEASE'
 		lombokVersion = '1.18.10'
 	}
+
+	repositories {
+		mavenCentral()
+		jcenter()
+	}
+
+	dependencies {
+		classpath 'no.nils:wsdl2java:0.10'
+		classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+	}
 }
 
 group = 'com.my.poc'
@@ -13,10 +23,6 @@ allprojects {
 		repositories {
 			mavenCentral()
 		}
-
-		dependencies {
-			classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
-		}
 	}
 
 	repositories {
@@ -25,22 +31,27 @@ allprojects {
 
 	apply plugin: 'java'
 
-//	configurations {
-//		compileOnly {
-//			extendsFrom annotationProcessor
-//		}
-//	}
-
 	dependencies {
-//		compileOnly 'org.projectlombok:lombok'
-//		annotationProcessor 'org.projectlombok:lombok'
-//		testCompileOnly 'org.projectlombok:lombok'
-//		testAnnotationProcessor 'org.projectlombok:lombok'
 		compileOnly "org.projectlombok:lombok:${lombokVersion}"
 		annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
 		testCompileOnly "org.projectlombok:lombok:${lombokVersion}"
 		testAnnotationProcessor "org.projectlombok:lombok:${lombokVersion}"
 	}
+}
+
+apply plugin: 'no.nils.wsdl2java'
+
+wsdl2java {
+	wsdlsToGenerate = [
+	        [file("./implementations/soap-integration/src/main/resources/wsdl/sample.wsdl")]
+	]
+	generatedWsdlDir = file("./implementations/soap-integration/src/main/resources/generated-sources")
+	wsdlDir = file("./implementations/soap-integration/src/main/resources/wsdl")
+}
+
+wsdl2javaExt {
+	cxfVersion = "3.1.10"
+	deleteGeneratedSourcesOnClean = true
 }
 
 defaultTasks 'clean', 'build'
