@@ -1,10 +1,13 @@
 package com.my.poc.soapintegration;
 
+import com.my.poc.soapintegration.generic.*;
+import com.my.poc.soapintegration.specific.*;
 import com.my.poc.transaction.SubmitTransactionResponse;
 import com.my.poc.transaction.Transaction;
 import com.my.poc.transaction.TransactionStore;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.oxm.xstream.XStreamMarshaller;
 
 import java.util.ArrayList;
@@ -12,8 +15,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-
-import static java.util.Collections.emptyList;
 
 @RequiredArgsConstructor
 @Slf4j
@@ -23,6 +24,9 @@ public class TransactionStoreImpl implements TransactionStore {
     private final XStreamMarshaller xStreamMarshaller;
 //    private final GenericUnmarshaller genericUnmarshaller;
     private final GenericConfig genericConfig;
+    private final SpecificSoapConnector specificSoapConnector;
+    private final Jaxb2Marshaller jaxb2Marshaller;
+    private final SpecificConfig specificConfig;
 
     @Override
     public List<Transaction> getTransactions(String accountId) {
@@ -86,6 +90,15 @@ public class TransactionStoreImpl implements TransactionStore {
 
     @Override
     public SubmitTransactionResponse submitTransaction(Transaction transaction) {
-        return null;
+
+        SpecificRequest request = SpecificUtil.getRequest(transaction);
+
+        Map<String, String> credentials = new HashMap<>();
+        credentials.put("username", specificConfig.getUsername());
+        credentials.put("password", specificConfig.getPassword());
+
+        SpecificResponse response = (SpecificResponse) specificSoapConnector.makeWSCall(specificConfig.getSoapUrl(), request, credentials);
+
+        return SpecificUtil.mapResponse(response);
     }
 }

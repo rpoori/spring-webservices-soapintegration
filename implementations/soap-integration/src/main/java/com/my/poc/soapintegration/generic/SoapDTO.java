@@ -1,4 +1,4 @@
-package com.my.poc.soapintegration;
+package com.my.poc.soapintegration.generic;
 
 import lombok.*;
 import org.jibx.runtime.*;

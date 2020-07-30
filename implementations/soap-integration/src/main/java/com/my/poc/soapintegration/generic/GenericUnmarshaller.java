@@ -1,4 +1,4 @@
-package com.my.poc.soapintegration;
+package com.my.poc.soapintegration.generic;
 
 import org.springframework.oxm.XmlMappingException;
 import org.springframework.oxm.jibx.JibxMarshaller;
