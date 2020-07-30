@@ -1,0 +1,16 @@
+apply plugin: 'java'
+
+group 'com.my.poc'
+version '0.0.1-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+dependencies {
+    implementation project(':domains:transaction')
+    implementation 'org.jibx:jibx-run:1.2.1'
+    implementation "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
+    implementation "org.springframework.boot:spring-boot-starter-web-services:${springBootVersion}"
+    compile group: 'org.springframework', name: 'spring-oxm', version: '3.0.6.RELEASE'
+    implementation 'com.thoughtworks.xstream:xstream:1.4.11.1'
+    testImplementation "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
+}
